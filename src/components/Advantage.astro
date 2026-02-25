@@ -1,0 +1,57 @@
+---
+const benefits = [
+  {
+    number: "1",
+    title: "Performance Gap Analysis",
+    description: "Compare reaction times and force generation against a reference database of 640 elite sprinter starts, enabling data-driven coaching decisions."
+  },
+  {
+    number: "2",
+    title: "Immediate On-site Data",
+    description: "Force, time, and velocity metrics are processed immediately post-run. Automated PDF reports are generated on the track for instant review."
+  },
+  {
+    number: "3",
+    title: "Biomechanics Integration",
+    description: "Software algorithms developed in collaboration with Prof. Dr. Steffen Willwacher. Translates complex kinematic data into direct coaching insights."
+  }
+];
+---
+
+<section id="advantage" class="py-24 bg-brand-light-alt relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="text-center mb-16 max-w-3xl mx-auto">
+      <h2 class="text-brand-red font-bold tracking-widest uppercase text-sm mb-3">The Advantage</h2>
+      <h3 class="text-4xl md:text-4xl font-black text-brand-dark mb-4 leading-tight">
+        Objective Precision on the Track
+      </h3>
+      <p class="text-lg text-brand-text-muted">
+        Races are decided in the blocks. The CONTEMPLAS mobile setup provides objective, high-precision track data to identify and optimize performance deficits immediately.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {benefits.map((benefit) => (
+        <div class="bg-white rounded-xl p-8 shadow-sm border border-brand-gray-border/60 hover:shadow-md transition-shadow duration-300 relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-brand-red/5 rounded-bl-[80px] -mr-8 -mt-8 transition-transform duration-500 group-hover:scale-110"></div>
+          
+          <div class="mb-6">
+            <span class="text-5xl font-black text-brand-gray-border group-hover:text-brand-red/20 transition-colors duration-300">
+              0{benefit.number}
+            </span>
+          </div>
+          
+          <div class="relative z-10">
+            <h4 class="text-xl font-bold text-brand-dark mb-3">
+              {benefit.title}
+            </h4>
+            <p class="text-brand-text-muted leading-relaxed">
+              {benefit.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

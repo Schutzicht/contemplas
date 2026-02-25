@@ -1,0 +1,70 @@
+---
+const equipment = [
+  {
+    title: "High-Speed Cameras",
+    description: "4-10 synchronized cameras capturing the start phase from all required biomechanical angles at high framerates.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>`,
+  },
+  {
+    title: "Instrumented Block",
+    description: "Specially designed starting blocks that measure 3D ground reaction forces and precise reaction times.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+  },
+  {
+    title: "Processing Unit & Software",
+    description: "High-performance notebook running TEMPLO® software for real-time data capture and analysis.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+  },
+  {
+    title: "Synchronized Audio",
+    description: "Start signal speaker integrated directly with the measurement software for true zero-time starts.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /></svg>`,
+  },
+  {
+    title: "Transport Case",
+    description: "Rugged wheeled case providing secure, all-in-one mobility for on-track testing environments.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>`,
+  },
+  {
+    title: "Automated Reporting",
+    description: "Immediate PDF reports available on-site right after the run for direct coach-athlete feedback.",
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+  }
+];
+---
+
+<section id="equipment" class="py-24 bg-white relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-16 md:flex md:justify-between md:items-end">
+      <div class="max-w-2xl">
+        <h2 class="text-brand-red font-bold tracking-widest uppercase text-sm mb-3">System Components</h2>
+        <h3 class="text-3xl md:text-4xl font-black text-brand-dark mb-4">
+          The Ultimate Mobile Set-up
+        </h3>
+        <p class="text-lg text-brand-text-muted">
+          A complete, integrated hardware and software solution engineered specifically for professional track and field environments.
+        </p>
+      </div>
+      <div class="mt-6 md:mt-0 hidden md:block">
+        <a href="#contact" class="inline-flex items-center gap-2 text-brand-red font-bold hover:text-brand-dark transition-colors">
+          Request Technical Specs
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {equipment.map((item) => (
+        <div class="p-8 rounded-xl bg-brand-light-alt border border-brand-gray-border/50 hover:border-brand-red/30 focus-within:ring-2 focus-within:ring-brand-red group transition-all duration-300">
+          <div class="w-12 h-12 rounded-lg bg-white border border-brand-gray-border/50 flex items-center justify-center text-brand-dark mb-6 group-hover:text-brand-red group-hover:bg-brand-red/5 transition-colors duration-300 shadow-sm" set:html={item.icon} />
+          <h4 class="text-lg font-bold text-brand-dark mb-2">{item.title}</h4>
+          <p class="text-brand-text-muted leading-relaxed text-sm">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

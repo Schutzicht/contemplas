@@ -1,0 +1,57 @@
+---
+---
+
+<header class="fixed w-full top-0 left-0 z-50 bg-brand-dark/80 backdrop-blur-lg border-b border-white/10 shadow-sm" id="main-header">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/" class="flex items-center">
+          <img src="/Input visuals contemplas/logo.webp" alt="CONTEMPLAS Logo" class="h-6 w-auto">
+        </a>
+      </div>
+      
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="#advantage" class="text-white/80 hover:text-white transition-colors text-sm font-semibold tracking-wide">The Advantage</a>
+        <a href="#equipment" class="text-white/80 hover:text-white transition-colors text-sm font-semibold tracking-wide">Equipment</a>
+        <a href="#testimonials" class="text-white/80 hover:text-white transition-colors text-sm font-semibold tracking-wide">Proof</a>
+        <a href="#video-overview" class="text-white/80 hover:text-white transition-colors text-sm font-semibold tracking-wide">Video</a>
+        <a href="#contact" class="bg-brand-red text-white hover:bg-opacity-90 px-5 py-2 rounded-full text-sm font-bold shadow-sm transition-all duration-300 hover:shadow-md">Contact Us</a>
+      </nav>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button type="button" class="text-white/80 hover:text-white focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-btn">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden bg-brand-dark border-b border-white/10 absolute w-full shadow-xl" id="mobile-menu">
+    <div class="px-4 py-4 space-y-3">
+      <a href="#advantage" class="block text-white/80 hover:text-white font-medium rounded-md px-3 py-2 hover:bg-white/5">The Advantage</a>
+      <a href="#equipment" class="block text-white/80 hover:text-white font-medium rounded-md px-3 py-2 hover:bg-white/5">Equipment</a>
+      <a href="#testimonials" class="block text-white/80 hover:text-white font-medium rounded-md px-3 py-2 hover:bg-white/5">Proof</a>
+      <a href="#video-overview" class="block text-white/80 hover:text-white font-medium rounded-md px-3 py-2 hover:bg-white/5">Video</a>
+      <a href="#contact" class="block bg-brand-red text-white text-center font-bold px-3 py-3 rounded-md mt-4 shadow-sm">Contact Us</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+  }
+</script>

@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+    --color-brand-red: #f97316;
+    /* Contemplas modern Orange */
+    --color-brand-dark: #1e3a8a;
+    /* Contemplas Dark Blue */
+
+    --color-brand-light: #ffffff;
+    --color-brand-light-alt: #f8fafc;
+    --color-brand-gray-border: #e2e8f0;
+
+    --color-brand-text: #334155;
+    --color-brand-text-muted: #64748b;
+
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        background-color: var(--color-brand-light);
+        color: var(--color-brand-text);
+    }
+
+    body {
+        @apply font-sans antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-sans font-bold text-brand-dark;
+    }
+
+    a {
+        @apply transition-colors duration-300;
+    }
+}
+
+/* Basic scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-brand-light-alt);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
