@@ -36,11 +36,11 @@
   <!-- Mobile Menu -->
   <div class="md:hidden hidden bg-white border-t border-brand-gray-border/50 absolute w-full left-0 mt-2 rounded-xl shadow-xl overflow-hidden" id="mobile-menu">
     <div class="px-4 py-4 space-y-3">
-      <a href="#advantage" class="block text-brand-dark hover:text-brand-red font-medium rounded-md px-3 py-2 hover:bg-brand-light-alt">The Advantage</a>
-      <a href="#equipment" class="block text-brand-dark hover:text-brand-red font-medium rounded-md px-3 py-2 hover:bg-brand-light-alt">Equipment</a>
-      <a href="#testimonials" class="block text-brand-dark hover:text-brand-red font-medium rounded-md px-3 py-2 hover:bg-brand-light-alt">Proof</a>
-      <a href="#video-overview" class="block text-brand-dark hover:text-brand-red font-medium rounded-md px-3 py-2 hover:bg-brand-light-alt">Video</a>
-      <a href="#contact" class="block bg-brand-red text-white text-center font-bold px-3 py-3 rounded-md mt-4 shadow-sm">Contact Us</a>
+      <a href="#advantage" class="mobile-link block text-brand-dark hover:text-brand-red font-medium rounded-md px-3 py-2 hover:bg-brand-light-alt">The Advantage</a>
+      <a href="#equipment" class="mobile-link block text-brand-dark hover:text-brand-red font-medium rounded-md px-3 py-2 hover:bg-brand-light-alt">Equipment</a>
+      <a href="#testimonials" class="mobile-link block text-brand-dark hover:text-brand-red font-medium rounded-md px-3 py-2 hover:bg-brand-light-alt">Proof</a>
+      <a href="#video-overview" class="mobile-link block text-brand-dark hover:text-brand-red font-medium rounded-md px-3 py-2 hover:bg-brand-light-alt">Video</a>
+      <a href="#contact" class="mobile-link block bg-brand-red text-white text-center font-bold px-3 py-3 rounded-md mt-4 shadow-sm">Contact Us</a>
     </div>
   </div>
 </header>
@@ -58,6 +58,14 @@
       menu.classList.toggle('hidden');
     });
   }
+
+  // Auto-close menu on link click
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+    });
+  });
 
   // Scroll shrink effect
   window.addEventListener('scroll', () => {
