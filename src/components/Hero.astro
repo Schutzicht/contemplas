@@ -1,12 +1,21 @@
 ---
+import { Image } from 'astro:assets';
+import heroImage from '../assets/hero.png';
 ---
 
 <section class="relative min-h-[100dvh] lg:min-h-[90vh] flex items-center pt-32 lg:pt-40 pb-16" id="hero">
 <!-- Background Image with Overlay -->
   <div class="absolute inset-0 z-0 overflow-hidden">
-    <img 
-      src="/Input visuals contemplas/hero-start-2.png" 
-      alt="Sprinter at the starting block analysis" 
+    <Image
+      src={heroImage}
+      alt="Sprinter at the starting block analysis"
+      widths={[640, 960, 1280, 1920]}
+      sizes="100vw"
+      formats={['avif', 'webp']}
+      quality={70}
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
       class="w-full h-full object-cover object-top"
     />
     <div class="absolute inset-0 bg-black/40"></div>
@@ -15,7 +24,7 @@
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 mt-12">
     <div class="max-w-3xl flex flex-col items-start text-left">
-      
+
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-red/20 text-brand-light-alt text-xs font-bold tracking-widest uppercase mb-6 border border-brand-red/30 backdrop-blur-sm">
         <span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
         Professional Sprint Analysis
@@ -25,7 +34,7 @@
         Own the Start.<br/>
         <span class="text-brand-red">Rule the Track.</span>
       </h1>
-      
+
       <p class="text-lg md:text-xl text-brand-light-alt/90 mb-10 max-w-2xl font-medium leading-relaxed drop-shadow-md">
         Professional video-based software and hardware solutions to analyze sprint performance. Accurately measure force, time, and velocity metrics to refine athlete performance.
       </p>
@@ -35,7 +44,7 @@
           Request Information
         </a>
         <a href="#video-overview" class="w-full sm:w-auto px-8 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white font-bold text-center text-base rounded-md transition-all flex justify-center items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current text-white" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 fill-current text-white" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
           Watch Video
         </a>
       </div>
@@ -50,18 +59,51 @@
     <p class="text-brand-text-muted mb-12 max-w-2xl mx-auto text-lg">
       Watch how the CONTEMPLAS Sprint Analysis Set-up delivers precise kinematic and kinetic data directly on the track.
     </p>
-    
-    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-brand-gray-border/50 bg-white" style="padding-top: 56.25%;">
-      <!-- 16:9 Aspect Ratio Container for YouTube -->
-      <iframe 
-        class="absolute top-0 left-0 w-full h-full"
-        src="https://www.youtube.com/embed/gs6h9U1P1ww?rel=0&showinfo=0&iv_load_policy=3" 
-        title="CONTEMPLAS Sprint Analysis Overview" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-      </iframe>
+
+    <!-- Lite YouTube Facade: lightweight thumbnail until user clicks play -->
+    <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-brand-gray-border/50 bg-black aspect-video">
+      <button
+        id="yt-facade"
+        type="button"
+        aria-label="Play video: CONTEMPLAS Sprint Analysis Overview"
+        data-id="gs6h9U1P1ww"
+        class="absolute inset-0 w-full h-full group cursor-pointer"
+      >
+        <img
+          src="https://i.ytimg.com/vi/gs6h9U1P1ww/hqdefault.jpg"
+          srcset="https://i.ytimg.com/vi/gs6h9U1P1ww/hqdefault.jpg 480w, https://i.ytimg.com/vi/gs6h9U1P1ww/sddefault.jpg 640w, https://i.ytimg.com/vi/gs6h9U1P1ww/maxresdefault.jpg 1280w"
+          sizes="(min-width: 1024px) 1024px, 100vw"
+          alt="CONTEMPLAS Sprint Analysis Overview"
+          loading="lazy"
+          decoding="async"
+          width="1280"
+          height="720"
+          class="w-full h-full object-cover"
+        />
+        <span aria-hidden="true" class="absolute inset-0 flex items-center justify-center">
+          <span class="flex items-center justify-center w-20 h-20 rounded-full bg-brand-red shadow-2xl group-hover:scale-110 transition-transform duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-9 h-9 ml-1"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </span>
+      </button>
     </div>
   </div>
 </section>
+
+<script>
+  const facade = document.getElementById('yt-facade');
+  if (facade) {
+    facade.addEventListener('click', () => {
+      const id = facade.getAttribute('data-id');
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('src', `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&showinfo=0&iv_load_policy=3`);
+      iframe.setAttribute('title', 'CONTEMPLAS Sprint Analysis Overview');
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.className = 'absolute inset-0 w-full h-full';
+      facade.replaceWith(iframe);
+    }, { once: true });
+  }
+</script>

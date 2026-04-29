@@ -1,4 +1,16 @@
 ---
+import { Image } from 'astro:assets';
+import abtp from '../assets/logos/abtp.webp';
+import baspo from '../assets/logos/baspo.webp';
+import hochschule from '../assets/logos/hochschule-offenburg.webp';
+import tuDortmund from '../assets/logos/tu-dortmund.webp';
+
+const partners = [
+  { src: abtp, alt: 'ABTP' },
+  { src: baspo, alt: 'BASPO' },
+  { src: hochschule, alt: 'Hochschule Offenburg' },
+  { src: tuDortmund, alt: 'TU Dortmund' },
+];
 ---
 
 <section id="testimonials" class="py-16 lg:py-24 bg-white border-b border-brand-gray-border/50">
@@ -16,10 +28,10 @@
         <blockquote class="text-xl md:text-2xl text-brand-dark font-medium leading-relaxed mb-8 italic">
           "By combining motion data with force, Sprint Start Analysis allows us to objectively optimize the most critical phase of the race. The delivery of precise, actionable data directly to coaching staff has proven highly effective."
         </blockquote>
-        
+
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 rounded-full bg-white border border-brand-gray-border flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-brand-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
           </div>
@@ -50,22 +62,23 @@
        </div>
     </div>
 
-    <!-- Client Logos (White Background specifically requested for white-bg logos) -->
+    <!-- Client Logos -->
     <div class="pt-12">
       <h3 class="text-sm font-bold text-brand-text-muted text-center uppercase tracking-widest mb-10">Trusted by High-Performance Centers</h3>
       <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-        <div class="bg-white p-4 rounded-xl shadow-sm border border-brand-gray-border/30 hover:shadow-md transition-shadow">
-          <img src="/Input visuals contemplas/abtp-logo.webp" alt="ABTP" class="h-16 w-auto object-contain">
-        </div>
-        <div class="bg-white p-4 rounded-xl shadow-sm border border-brand-gray-border/30 hover:shadow-md transition-shadow">
-          <img src="/Input visuals contemplas/baspo-logo.webp" alt="BASPO" class="h-16 w-auto object-contain">
-        </div>
-        <div class="bg-white p-4 rounded-xl shadow-sm border border-brand-gray-border/30 hover:shadow-md transition-shadow">
-          <img src="/Input visuals contemplas/hochschule-offenburg-logo.webp" alt="Hochschule Offenburg" class="h-16 w-auto object-contain">
-        </div>
-        <div class="bg-white p-4 rounded-xl shadow-sm border border-brand-gray-border/30 hover:shadow-md transition-shadow">
-          <img src="/Input visuals contemplas/tu-dortmund-logo.webp" alt="TU Dortmund" class="h-16 w-auto object-contain">
-        </div>
+        {partners.map((p) => (
+          <div class="bg-white p-4 rounded-xl shadow-sm border border-brand-gray-border/30 hover:shadow-md transition-shadow">
+            <Image
+              src={p.src}
+              alt={p.alt}
+              widths={[128, 256]}
+              sizes="128px"
+              formats={['avif', 'webp']}
+              loading="lazy"
+              class="h-16 w-auto object-contain"
+            />
+          </div>
+        ))}
       </div>
     </div>
 

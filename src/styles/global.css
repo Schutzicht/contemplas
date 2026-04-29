@@ -13,7 +13,7 @@
     --color-brand-text: #334155;
     --color-brand-text-muted: #64748b;
 
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter Variable', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
@@ -27,21 +27,19 @@
         @apply font-sans antialiased;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    h1, h2, h3, h4, h5, h6 {
         @apply font-sans font-bold text-brand-dark;
     }
 
     a {
         @apply transition-colors duration-300;
     }
+
+    img {
+        @apply max-w-full h-auto;
+    }
 }
 
-/* Basic scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
